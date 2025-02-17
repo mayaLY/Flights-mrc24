@@ -4,7 +4,7 @@ export const pool = mysql.createPool({
     host: 'localhost',     
     user: 'root',         
     password: '12345678',          
-    database: 'flights_db',  // Replace with your database name
+    database: 'flights',  // Replace with your database name
     port: 3306,           
     waitForConnections: true,
     connectionLimit: 10
