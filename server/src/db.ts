@@ -1,18 +1,17 @@
 import mysql from 'mysql2';
-import { CLIENT_RENEG_LIMIT } from 'tls';
+import { config } from "dotenv";
 
+config();
 export const pool = mysql.createPool({
-    host: 'localhost',     
-    user: 'root',         
-    password: '17march94',          
-    database: 'flights',  // Replace with your database name
-    port: 3306,           
+    host: process.env.DB_HOST,
+    user: 'root',
+    password:'17march94',
+    database: process.env.DB_NAME,
     waitForConnections: true,
-    connectionLimit: 10
-}).promise();
-
-export const testConnection = async () => {
-    console.log("testConnection");
+    connectionLimit: 10,
+  })
+  .promise();
+  export const testConnection = async () => {
     try {
         const connection = await pool.getConnection();
         console.log('Database connected successfully');
